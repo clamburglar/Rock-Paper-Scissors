@@ -42,46 +42,38 @@ game = () => {
             if (computerSelection == 0){
                 if (playerSelection == 0){
                     roundNum = roundNum - 1;
-                    alert("It's a TIE!, Try Again");
-                    return 
+                    return ("It's a TIE!, Try Again");
                 } else if (playerSelection == 2){
                     computerScore = computerScore + 1;
-                    alert('You Lose!, Rock beats Scissors');
-                    return
+                    return ('You Lose!, Rock beats Scissors');
                 } else {
                     playerScore = playerScore + 1;
-                    alert('You win!, Paper beats Rock');
-                    return
-                }
+                    return ('You win!, Paper beats Rock');
+                    }
                 }
             if (computerSelection == 1){
                 if (playerSelection == 1){
                     roundNum = roundNum - 1;
-                    alert("It's a TIE!, Try Again");
-                    return
+                    return ("It's a TIE!, Try Again");
                 } else if (playerSelection == 0){
                     computerScore = computerScore + 1;
-                    alert('You Lose!, Paper beats Rock');
-                    return
+                    return('You Lose!, Paper beats Rock');
                 } else {
                     playerScore = playerScore + 1;
-                    alert('You win!, Scissors beats Paper');
-                    return
+                    return ('You win!, Scissors beats Paper');
                 }
                 }
             if (computerSelection == 2){
                 if (playerSelection == 2){
                     roundNum = roundNum - 1;
-                    alert("It's a TIE!, Try Again");
-                    return
+                    return ("It's a TIE!, Try Again");
                 } else if (playerSelection == 1){
                     computerScore = computerScore + 1;
-                    alert('You Lose!, Scissors beats Rock');
-                    return
+                    return('You Lose!, Scissors beats Rock');
                 } else {
                     playerScore = playerScore + 1;
-                    alert('You win!, Rock beats Scissors');
-                    return
+                    return('You win!, Rock beats Scissors');
+                    
                 }
                 }
             }
@@ -92,15 +84,15 @@ game = () => {
         const playerSelection = getPlayerChoice();
         console.log(playRound(computerSelection, playerSelection));
 
-        /*Create a function that compares scores until best 3 of 5 is reached, 
-        then communicate the game winner */
+        /*Compare scores until best 3 of 5 is reached, then communicate the
+         game winner */
 
         if (computerScore == 3){
-            alert('Sorry!, You lost best 3 of 5');
+            console.log('Sorry!, You lost best 3 of 5');
             break
         }
         if (playerScore == 3){
-            alert('Congrats!, You won best 3 of 5');
+            console.log('Congrats!, You won best 3 of 5');
             break
         }
 
