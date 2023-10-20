@@ -1,108 +1,105 @@
-game = () => {
-    
- /* Create a function that plays five rounds and  declares the winner of the game */
-    
-    let roundNum = 1;
-    let computerScore = 0;
-    let playerScore = 0;
+/* Create a function that plays five rounds and  declares the winner of the game */
 
-    while (roundNum < 6){
-        console.log('Round Number: ' + roundNum);
-        console.log('Computer Score: ' + computerScore)
-        console.log('Player Score: ' + playerScore);
+let roundNum = 1;
+let computerScore = 0;
+let playerScore = 0;
 
-        /* Declare rock, paper, scissors, and their individual hierarchy */
+const body = document.querySelector('body');
+let rockButton = document.createElement('button');
+rockButton.textContent = 'Rock';
+let paperButton = document.createElement('button');
+paperButton.textContent = 'Paper';
+let scissorsButton = document.createElement('button');
+scissorsButton.textContent = 'Scissors';
 
-        const choices = ['rock', 'paper', 'scissors']
+const buttons = document.querySelectorAll('button');
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        playerSelection = button.textContent;
+        console.log(playerSelection);
+    });
+});
 
-        /* Create a function that randomly generates the computers choice */
+body.appendChild(rockButton);
+body.appendChild(paperButton);
+body.appendChild(scissorsButton);
 
-        getComputerChoice = () => {
-            let computerSelection = choices[Math.floor(Math.random() * choices.length)];
-            console.log(computerSelection);
-            return choices.indexOf(computerSelection);
-        }
 
-        /* Provide user with the 3 choices to play against computer.
-        Convert player choice to lowercase for case insensitivity.
-        Confirm spelling with choices reference check*/
+console.log('Round Number: ' + roundNum);
+console.log('Computer Score: ' + computerScore);
+console.log('Player Score: ' + playerScore);
 
-        getPlayerChoice = () => {
-            let input = prompt('Make your pick!', 'Type rock, paper, or scissors');
-            let playerSelection = input.toLowerCase();
+/* Declare rock, paper, scissors, and their individual hierarchy */
 
-            if (choices.indexOf(playerSelection) > -1){
-                console.log(playerSelection);
-                return choices.indexOf(playerSelection);
-            } else {
-                getPlayerChoice();
+const choices = ['Rock', 'Paper', 'Scissors']
+
+/* Create a function that randomly generates the computers choice */
+
+getComputerChoice = () => {
+    let computerSelection = choices[Math.floor(Math.random() * choices.length)];
+    console.log(computerSelection);
+    return computerSelection;
+}
+
+/* Create a function that evaluates user versus computer selection and
+display a message that declares the winner of a single round, increment scores*/
+
+playRound = (computerSelection, playerSelection) => {
+    if (computerSelection == choices[0]){
+        if (playerSelection == choices[0]){
+            roundNum = roundNum - 1;
+            return ("It's a TIE!, Try Again");
+        } else if (playerSelection == choice[2]){
+            computerScore = computerScore + 1;
+            return ('You Lose!, Rock beats Scissors');
+        } else {
+            playerScore = playerScore + 1;
+            return ('You win!, Paper beats Rock');
             }
         }
-
-        /* Create a function that evaluates user versus computer selection and
-        display a message that declares the winner of a single round, increment scores*/
-        
-        playRound = (computerSelection, playerSelection) => {
-            if (computerSelection == 0){
-                if (playerSelection == 0){
-                    roundNum = roundNum - 1;
-                    return ("It's a TIE!, Try Again");
-                } else if (playerSelection == 2){
-                    computerScore = computerScore + 1;
-                    return ('You Lose!, Rock beats Scissors');
-                } else {
-                    playerScore = playerScore + 1;
-                    return ('You win!, Paper beats Rock');
-                    }
-                }
-            if (computerSelection == 1){
-                if (playerSelection == 1){
-                    roundNum = roundNum - 1;
-                    return ("It's a TIE!, Try Again");
-                } else if (playerSelection == 0){
-                    computerScore = computerScore + 1;
-                    return('You Lose!, Paper beats Rock');
-                } else {
-                    playerScore = playerScore + 1;
-                    return ('You win!, Scissors beats Paper');
-                }
-                }
-            if (computerSelection == 2){
-                if (playerSelection == 2){
-                    roundNum = roundNum - 1;
-                    return ("It's a TIE!, Try Again");
-                } else if (playerSelection == 1){
-                    computerScore = computerScore + 1;
-                    return('You Lose!, Scissors beats Rock');
-                } else {
-                    playerScore = playerScore + 1;
-                    return('You win!, Rock beats Scissors');
-                    
-                }
-                }
-            }
-
-        /*Call the function to play a round*/
-
-        const computerSelection = getComputerChoice();
-        const playerSelection = getPlayerChoice();
-        console.log(playRound(computerSelection, playerSelection));
-
-        /*Compare scores until best 3 of 5 is reached, then communicate the
-         game winner */
-
-        if (computerScore == 3){
-            console.log('Sorry!, You lost best 3 of 5');
-            break
+    if (computerSelection == choices[1]){
+        if (playerSelection == choices[1]){
+            roundNum = roundNum - 1;
+            return ("It's a TIE!, Try Again");
+        } else if (playerSelection == choices[0]){
+            computerScore = computerScore + 1;
+            return('You Lose!, Paper beats Rock');
+        } else {
+            playerScore = playerScore + 1;
+            return ('You win!, Scissors beats Paper');
         }
-        if (playerScore == 3){
-            console.log('Congrats!, You won best 3 of 5');
-            break
         }
-
-        /* Increment round counter*/
-
-        roundNum = roundNum + 1;
+    if (computerSelection == choices[2]){
+        if (playerSelection == choices[2]){
+            roundNum = roundNum - 1;
+            return ("It's a TIE!, Try Again");
+        } else if (playerSelection == choices[1]){
+            computerScore = computerScore + 1;
+            return('You Lose!, Scissors beats Rock');
+        } else {
+            playerScore = playerScore + 1;
+            return('You win!, Rock beats Scissors');
+            
+        }
+        }
     }
-   }
-console.log(game())
+
+    /*Call the function to play a round*/
+
+const computerSelection = getComputerChoice();
+
+    /*Compare scores until 5 is reached, then communicate the game
+    winner */
+
+if (computerScore == 5){
+    console.log('Sorry!, You lost');
+    
+}
+if (playerScore == 5){
+    console.log('Congrats!, You won!');
+    
+}
+
+/* Increment round counter*/
+
+roundNum = roundNum + 1;
