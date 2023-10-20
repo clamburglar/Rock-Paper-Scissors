@@ -1,8 +1,11 @@
 game = () => {
+    
  /* Create a function that plays five rounds and  declares the winner of the game */
+    
     let roundNum = 1;
     let computerScore = 0;
     let playerScore = 0;
+
     while (roundNum < 6){
         console.log('Round Number: ' + roundNum);
         console.log('Computer Score: ' + computerScore)
@@ -38,6 +41,7 @@ game = () => {
 
         /* Create a function that evaluates user versus computer selection and
         display a message that declares the winner of a single round, increment scores*/
+        
         playRound = (computerSelection, playerSelection) => {
             if (computerSelection == 0){
                 if (playerSelection == 0){
